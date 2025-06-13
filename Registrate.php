@@ -4,15 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario Registro Cineplanet</title>
-  <link rel="stylesheet" href="estilos.css">
+
+  <link rel="stylesheet" href="css/estilos.css">
+
 </head>
 <body>
 
   <div class="container">
     <h1>Únete</h1>
     <p>Completa tus datos y accede a nuestro <br><strong>universo de beneficios</strong></p>
-
-    <form id="registroForm">
+    <form id="registroForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
       <div class="row">
         <div class="field">
           <label>Nombre</label>
@@ -58,6 +59,7 @@
         <div class="field triple">
           <input type="text" name="numero_documento" placeholder="N° de documento" required>
           <span class="guion">-</span>
+
           <input type="text" name="dv" placeholder="DV" maxlength="1">
         </div>
       </div>
@@ -117,6 +119,12 @@
       <div class="submit">
         <button type="submit">Unirme</button>
       </div>
+      <?php if(!empty($errores)): ?>
+        <div class="error">
+          <?php echo $errores; ?>
+        </div>
+      <?php endif; ?>
+
     </form>
   </div>
 
