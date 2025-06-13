@@ -1,92 +1,97 @@
-CREATE DATABASE if not exists CINEPLANET;
+CREATE DATABASE IF NOT EXISTS CINEPLANET;
 USE CINEPLANET;
 
+-- Tabla CLIENTE
 CREATE TABLE CLIENTE (
-    id int auto_increment primary key
-    
-    
+    id INT AUTO_INCREMENT PRIMARY KEY
 );
 
-
+-- Tabla INVITADO
 CREATE TABLE INVITADO(
-	id_temp int primary key,
-    nombre_invitado varchar(20),
-	foreign key(id_temp) references CLIENTE(id)
+    id_temp INT PRIMARY KEY,
+    nombre_invitado VARCHAR(20),
+    FOREIGN KEY(id_temp) REFERENCES CLIENTE(id)
 );
 
-
+-- Tabla CLIENTE_REGISTRADO 
 CREATE TABLE CLIENTE_REGISTRADO (
-    id int primary key,
-    numero_identificacion varchar(20) not null unique,
-    nombre varchar(100),
-    correo varchar(100),
-    foreign key (id) references CLIENTE(id)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    apellido_paterno VARCHAR(100),
+    apellido_materno VARCHAR(100),
+    correo VARCHAR(100),
+    password VARCHAR(255),
+    tipo_documento VARCHAR(20),
+    DNI VARCHAR(20) UNIQUE,
+    dv VARCHAR(10),
+    fecha_nacimiento DATE,
+    celular VARCHAR(20),
+    departamento VARCHAR(50),
+    provincia VARCHAR(50),
+    distrito VARCHAR(50),
+    cineplanet BOOLEAN,
+    genero VARCHAR(10),
+    FOREIGN KEY (id) REFERENCES CLIENTE(id)
 );
 
+-- Tabla CINE
 CREATE TABLE CINE(
-    id_cine int auto_increment primary key,
-    CP_nombre varchar(30),
-    ciudad varchar(30)
+    id_cine INT AUTO_INCREMENT PRIMARY KEY,
+    CP_nombre VARCHAR(30),
+    ciudad VARCHAR(30)
 );
 
-
+-- Tabla PELICULA
 CREATE TABLE PELICULA(
-	id_pelicula int primary key,
-    titulo varchar(30),
-    genero varchar(30)
+    id_pelicula INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(30),
+    genero VARCHAR(30)
 );
 
-
+-- Tabla FUNCION
 CREATE TABLE FUNCION(
-	id_funcion int primary key,
-    nombre_funcion varchar(30),
-    pelicula_id int,
-    foreign key(pelicula_id) references PELICULA(id_pelicula)
+    id_funcion INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_funcion VARCHAR(30),
+    pelicula_id INT,
+    FOREIGN KEY(pelicula_id) REFERENCES PELICULA(id_pelicula)
 );
 
-
-
+-- Tabla CINE_PELICULA
 CREATE TABLE CINE_PELICULA(
-	cine_id int,
-    pelicula_id int,
-    fecha_inicio date,
-    fecha_fin date,
-    
-    primary key (cine_id, pelicula_id),
-    foreign key (cine_id) references CINE(id_cine),
-    foreign key (pelicula_id) references PELICULA(id_pelicula)
-    
+    cine_id INT,
+    pelicula_id INT,
+    fecha_inicio DATE,
+    fecha_fin DATE,
+    PRIMARY KEY (cine_id, pelicula_id),
+    FOREIGN KEY (cine_id) REFERENCES CINE(id_cine),
+    FOREIGN KEY (pelicula_id) REFERENCES PELICULA(id_pelicula)
 );
 
-
+-- Tabla VISITA
 CREATE TABLE VISITA(
-
-	numero_compras_dia int,
-    cine_id int,
-    cliente_id int,
-    primary key (cine_id, cliente_id),
-    foreign key (cine_id) references CINE(id_cine),
-    foreign key (cliente_id) references CLIENTE(id)    
+    numero_compras_dia INT,
+    cine_id INT,
+    cliente_id INT,
+    PRIMARY KEY (cine_id, cliente_id),
+    FOREIGN KEY (cine_id) REFERENCES CINE(id_cine),
+    FOREIGN KEY (cliente_id) REFERENCES CLIENTE(id)
 );
 
-
+-- Tabla BOLETA
 CREATE TABLE BOLETA (
-    id int auto_increment primary key,
-    fecha datetime not null,
-    id_cliente int not null,
-    total decimal(10,2) not null,
-	foreign key (id_cliente) references CLIENTE(id)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATETIME NOT NULL,
+    id_cliente INT NOT NULL,
+    total DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (id_cliente) REFERENCES CLIENTE(id)
 );
 
-
-    
-
+-- Tabla SALA
 CREATE TABLE SALA(
-    id_sala int,
-    id_cine int not null,
-    
-    capacidad int,
-    formato varchar(30),
-    foreign key (id_cine) references CINE(id_cine),
-    primary key (id_cine, nro_sala)
+    id_sala INT,
+    id_cine INT NOT NULL,
+    capacidad INT,
+    formato VARCHAR(30),
+    PRIMARY KEY (id_cine, id_sala),
+    FOREIGN KEY (id_cine) REFERENCES CINE(id_cine)
 );

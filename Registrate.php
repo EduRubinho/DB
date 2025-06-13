@@ -80,12 +80,17 @@
           <label>Departamento</label>
           <select name="departamento" required>
             <option value="">Selecciona</option>
+            <option value="lima">Lima</option>
+            <option value="arequipa">Arequipa</option>
+
           </select>
         </div>
         <div class="field">
           <label>Provincia</label>
           <select name="provincia" required>
             <option value="">Selecciona</option>
+            <option value="lima">Lima</option>
+            <option value="callao">Callao</option>
           </select>
         </div>
       </div>
@@ -95,12 +100,17 @@
           <label>Distrito</label>
           <select name="distrito" required>
             <option value="">Selecciona</option>
+            <option value="miraflores">Miraflores</option>
+            <option value="san_isidro">San Isidro</option>
           </select>
         </div>
         <div class="field">
           <label>Tu Cineplanet favorito <span class="opcional">(Campo Opcional)</span></label>
           <select name="cineplanet_favorito">
             <option value="">Selecciona</option>
+            <option value="cineplanet_lima">Cineplanet Lima</option>
+            <option value="cineplanet_arequipa">Cineplanet Arequipa</option>
+            <option value="cineplanet_callao">Cineplanet Callao</option>
           </select>
         </div>
       </div>

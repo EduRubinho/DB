@@ -24,15 +24,19 @@
 
         $errores='';
         try {
-            $conexion = new PDO('mysql:host=127.0.0.1:3307;dbname=','root','');
+            $conexion = new PDO('mysql:host=127.0.0.1:3307;dbname=cineplanet','root','');
 
             
         } catch (PDOException $e) {
             echo 'Error de conexión: ' . $e->getMessage();
         }
+
+
         $statement= $conexion->prepare('SELECT *  FROM cliente_registrado WHERE DNI = :dni LIMIT 1');
         $statement->execute(array(':dni' => $DNI));
         $resultado= $statement->fetch();
+
+
 
         if($resultado != false){
             $errores .= "El usuario ya está registrado. <br>";
@@ -43,8 +47,12 @@
             $errores .= "Las contraseñas no coinciden. <br>";
         }
         if (empty($errores)) {
-            $statement = $conexion->prepare('INSERT INTO cliente_registrado (nombre, apellido_paterno, apellido_materno, correo, password, tipo_documento, DNI, dv, fecha_nacimiento, celular, departamento, provincia, distrito, cineplanet, genero) VALUES (:nombre, :apellido_paterno, :apellido_materno, :correo, :password, :tipo_documento, :dni, :dv, :fecha_nacimiento, :celular, :departamento, :provincia, :distrito, :cineplanet, :genero)');
+
+            $conexion->prepare("INSERT INTO cliente() VALUES ()")->execute();
+            $id_cliente = $conexion->lastInsertId();
+            $statement = $conexion->prepare('INSERT INTO cliente_registrado (id, nombre, apellido_paterno, apellido_materno, correo, password, tipo_documento, DNI, dv, fecha_nacimiento, celular, departamento, provincia, distrito, cineplanet, genero) VALUES (:id, :nombre, :apellido_paterno, :apellido_materno, :correo, :password, :tipo_documento, :dni, :dv, :fecha_nacimiento, :celular, :departamento, :provincia, :distrito, :cineplanet, :genero)');
             $statement->execute(array(
+                ':id' => $id_cliente,
                 ':nombre' => $nombre,
                 ':apellido_paterno' => $apellido_paterno,
                 ':apellido_materno' => $apellido_materno,
@@ -61,7 +69,8 @@
                 ':cineplanet' => $cineplanet,
                 ':genero' => $genero
             ));
-            header('Location: login.php');
+
+            header('Location: auth_login.php');
         } else {
             echo "<div class='error'>$errores</div>";
         }

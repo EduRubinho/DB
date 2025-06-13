@@ -22,6 +22,16 @@
             <a href="" class="nav-link">Dulcería</a>
             <a href="" class="nav-link">Corporativo</a>
             <a href="" class="nav-link">Blog</a>
+            <?php
+            session_start();
+            if (isset($_GET['cerrar'])) {
+                session_unset();
+                session_destroy();
+                header("Location: inicio.php");
+                exit();
+            }
+            ?>
+            <a href="?cerrar=1" class="nav-link">Cerrar Sesión</a>
         </nav>
         <div class="tercero">
             <button>
@@ -33,6 +43,7 @@
             <button>
                 <a href=""><span class="material-icons">help</span></a>
             </button>
+            
         </div>
     </header>
 </body>

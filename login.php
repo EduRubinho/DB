@@ -22,7 +22,7 @@
                             <p class="p2">DNI, RUT, CE o Pasaporte</p>
                         </div>
                         <div class="inputbox">
-                            <input type="password" name="contraseña" placeholder="Contraseña" required>
+                            <input type="password" name="password" placeholder="Contraseña" required>
                         </div>
                         <a href="" class="olvidar">
                             <p>¿Olvidaste tu contraseña?</p>

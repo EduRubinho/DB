@@ -1,7 +1,7 @@
 USE CINEPLANET;
 
 SELECT 
-    c.id AS id_cliente,
+    c.id AS id,
     cr.numero_identificacion,
     cr.nombre,
     cr.correo
