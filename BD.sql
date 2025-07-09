@@ -45,7 +45,12 @@ CREATE TABLE CINE(
 CREATE TABLE PELICULA(
     id_pelicula INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(30),
-    genero VARCHAR(30)
+    genero VARCHAR(30),
+	descripcion TEXT,
+	duracion TIME,
+	clasificacion VARCHAR(10),
+	idioma VARCHAR(30),
+	portada VARCHAR(255) -- URL o ruta local de imagen
 );
 
 -- Tabla FUNCION
@@ -94,4 +99,12 @@ CREATE TABLE SALA(
     formato VARCHAR(30),
     PRIMARY KEY (id_cine, id_sala),
     FOREIGN KEY (id_cine) REFERENCES CINE(id_cine)
+);
+
+
+CREATE TABLE IF NOT EXISTS ADMIN (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    nombre_completo VARCHAR(100)
 );
