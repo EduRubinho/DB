@@ -13,8 +13,8 @@
         } catch (PDOException $e) {
             echo 'Error de conexión: ' . $e->getMessage();
         }
-
-
+        
+        
 
         $statement = $conexion->prepare('SELECT * FROM cliente_registrado WHERE DNI = :dni AND password = :password LIMIT 1');
         $statement->execute(array(':dni' => $nrosocio, ':password' => $password));

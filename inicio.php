@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Menu Basico</title>
 </head>
+
 <body>
     <header>
         <a href="" class="logo">
@@ -15,13 +17,13 @@
             <h2 class="nombre-empresa">cineplanet</h2>
         </a>
         <nav>
-            <a href="" class="nav-link">Películas</a>
+            <a href="pelicula.php" class="nav-link">Películas</a>
             <a href="" class="nav-link">Cines</a>
             <a href="" class="nav-link">Promociones</a>
             <a href="" class="nav-link">Socios</a>
             <a href="" class="nav-link">Dulcería</a>
             <a href="" class="nav-link">Corporativo</a>
-            <a href="" class="nav-link">Blog</a>
+            <a href="blog.php" class="nav-link">Blog</a>
             <?php
             session_start();
             if (isset($_GET['cerrar'])) {
@@ -43,7 +45,7 @@
             <button>
                 <a href=""><span class="material-icons">help</span></a>
             </button>
-            
+
         </div>
     </header>
 </body>
