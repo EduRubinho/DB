@@ -29,7 +29,7 @@ CREATE TABLE CLIENTE_REGISTRADO (
     departamento VARCHAR(50),
     provincia VARCHAR(50),
     distrito VARCHAR(50),
-    cineplanet BOOLEAN,
+    cineplanet VARCHAR(50),
     genero VARCHAR(10),
     FOREIGN KEY (id) REFERENCES CLIENTE(id)
 );

@@ -1,9 +1,12 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/e.scss">
+    <link rel="stylesheet" href="../css/login.css">
     <title>Document</title>
 </head>
 <body>
@@ -14,7 +17,8 @@
                     <h1>Iniciar sesión</h1>
                     <p class="p1">Ingresa a tu cuenta para disfrutar de tus beneficios, acumular</p>
                     <p class="p1">puntos y vivir al máximo la experiencia Cineplanet.</p>
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                    <form action="../../Controlador/usuario/UsuarioControlador.php" method="post">
+                        <input type="hidden" name="accion" value="login">    
                         <div class="inputbox">
                             <input type="text" name="nrosocio" id="nrosocio" placeholder=" N° de Socio Cineplanet" required>
                         </div>
@@ -44,7 +48,7 @@
                 <p class="p3">Registrándote en nuestro programa Socio Cineplanet podrás acumular</p>
                 <p class="p3">puntos en cada visita que realices y gozar de grandes beneficios.</p>
                 <div class="botonrojo">
-                    <button class="boton2"><a href="auth_register.php">Únete</a></button>
+                    <button class="boton2"><a href="registro.php">Únete</a></button>
                 </div>
             </div>
         </div>

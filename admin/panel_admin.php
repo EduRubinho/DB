@@ -1,11 +1,15 @@
 <?php
-session_start();
-if (!isset($_SESSION['admin'])) {
-    header('Location: login_admin.php');
-    exit;
-}
+/**
+ * panel_admin.php
+ * Panel principal del administrador.
+ * - Requiere sesión de admin activa.
+ * - Muestra opciones administrativas.
+ */
+require_once 'db.php';
+require_once 'auth.php';
+require_admin();
 ?>
 
-<h2>Bienvenido, <?php echo $_SESSION['admin']; ?></h2>
+<h2>Bienvenido, <?php echo htmlspecialchars($_SESSION['admin']); ?></h2>
 <a href="agregar_pelicula.php">➕ Agregar Película</a><br>
 <a href="logout_admin.php">Cerrar sesión</a>

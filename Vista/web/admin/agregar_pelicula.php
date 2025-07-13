@@ -1,15 +1,18 @@
 <?php
-session_start();
-// Verifica si es admin (puedes validar con un rol más adelante)
-if (!isset($_SESSION['admin'])) {
-    header('Location: login_admin.php');
-    exit;
-}
+/**
+ * agregar_pelicula.php
+ * Formulario para agregar una nueva película (solo admin).
+ * - Requiere sesión de admin activa.
+ * - Buenas prácticas y documentación.
+ */
+require_once 'db.php';
+require_once 'auth.php';
+require_admin();
 ?>
 
 <h2>Agregar Nueva Película</h2>
 
-<form action="procesar_agregar_pelicula.php" method="POST" enctype="multipart/form-data">
+<form action="funciones_admin.php" method="POST" enctype="multipart/form-data">
     <label>Título:</label>
     <input type="text" name="titulo" required><br>
 
@@ -33,3 +36,5 @@ if (!isset($_SESSION['admin'])) {
 
     <button type="submit">Agregar Película</button>
 </form>
+
+<a href="logout_admin.php">Cerrar sesión</a>
