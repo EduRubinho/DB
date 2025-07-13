@@ -1,18 +1,24 @@
+<?php
+session_start();
+$errores = $_SESSION['errores'] ?? '';
+unset($_SESSION['errores']);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario Registro Cineplanet</title>
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
 
-  <div class="container">
-    <h1>Únete</h1>
-    <p>Completa tus datos y accede a nuestro <br><strong>universo de beneficios</strong></p>
+<div class="container">
+  <h1>Únete</h1>
+  <p>Completa tus datos y accede a nuestro <br><strong>universo de beneficios</strong></p>
 
-    <form id="registroForm">
+  <form id="registroForm" action="../../Controlador/usuario/UsuarioControlador.php" method="post">
+        <input type="hidden" name="accion" value="registro">
       <div class="row">
         <div class="field">
           <label>Nombre</label>
@@ -58,6 +64,7 @@
         <div class="field triple">
           <input type="text" name="numero_documento" placeholder="N° de documento" required>
           <span class="guion">-</span>
+
           <input type="text" name="dv" placeholder="DV" maxlength="1">
         </div>
       </div>
@@ -78,12 +85,17 @@
           <label>Departamento</label>
           <select name="departamento" required>
             <option value="">Selecciona</option>
+            <option value="lima">Lima</option>
+            <option value="arequipa">Arequipa</option>
+
           </select>
         </div>
         <div class="field">
           <label>Provincia</label>
           <select name="provincia" required>
             <option value="">Selecciona</option>
+            <option value="lima">Lima</option>
+            <option value="callao">Callao</option>
           </select>
         </div>
       </div>
@@ -93,12 +105,17 @@
           <label>Distrito</label>
           <select name="distrito" required>
             <option value="">Selecciona</option>
+            <option value="miraflores">Miraflores</option>
+            <option value="san_isidro">San Isidro</option>
           </select>
         </div>
         <div class="field">
           <label>Tu Cineplanet favorito <span class="opcional">(Campo Opcional)</span></label>
           <select name="cineplanet_favorito">
             <option value="">Selecciona</option>
+            <option value="cineplanet_lima">Cineplanet Lima</option>
+            <option value="cineplanet_arequipa">Cineplanet Arequipa</option>
+            <option value="cineplanet_callao">Cineplanet Callao</option>
           </select>
         </div>
       </div>
@@ -117,9 +134,10 @@
       <div class="submit">
         <button type="submit">Unirme</button>
       </div>
+      <?php if(!empty($errores)): ?>
+        <div class="error">
+          <?php echo $errores; ?>
+        </div>
+      <?php endif; ?>
+
     </form>
-  </div>
-
-</body>
-</html>
-

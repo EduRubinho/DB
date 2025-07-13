@@ -1,0 +1,80 @@
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 35px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+body{
+    font-family: sans-serif;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: #0D1F3F;
+}
+header{
+    min-height: 70px;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+.logo img{
+    height: 50px;
+}
+nav a{
+    font-weight: 700;
+}
+nav a:hover{
+    color: white;
+}
+nav {
+    display: flex;
+    gap: 30px;
+    font-size: 19px;
+}
+.tercero{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.tercero button{
+    background: none;
+    height: 50px;
+    width: 50px;
+    border: none;
+    outline: none;
+    
+}
+
+@media (max-width: 1070px){
+    header{
+        flex-direction: column;
+    }
+}
