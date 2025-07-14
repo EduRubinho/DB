@@ -42,15 +42,15 @@ CREATE TABLE CINE(
 );
 
 -- Tabla PELICULA
-CREATE TABLE PELICULA(
-    id_pelicula INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(30),
-    genero VARCHAR(30),
-	descripcion TEXT,
-	duracion TIME,
-	clasificacion VARCHAR(10),
-	idioma VARCHAR(30),
-	portada VARCHAR(255) -- URL o ruta local de imagen
+CREATE TABLE peliculas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    descripcion TEXT,
+    genero VARCHAR(100),
+    duracion INT,
+    director VARCHAR(255),
+    fecha_estreno DATE,
+    imagen VARCHAR(255)
 );
 
 -- Tabla FUNCION
@@ -58,7 +58,7 @@ CREATE TABLE FUNCION(
     id_funcion INT AUTO_INCREMENT PRIMARY KEY,
     nombre_funcion VARCHAR(30),
     pelicula_id INT,
-    FOREIGN KEY(pelicula_id) REFERENCES PELICULA(id_pelicula)
+    FOREIGN KEY(pelicula_id) REFERENCES peliculas(id)
 );
 
 -- Tabla CINE_PELICULA
@@ -69,7 +69,7 @@ CREATE TABLE CINE_PELICULA(
     fecha_fin DATE,
     PRIMARY KEY (cine_id, pelicula_id),
     FOREIGN KEY (cine_id) REFERENCES CINE(id_cine),
-    FOREIGN KEY (pelicula_id) REFERENCES PELICULA(id_pelicula)
+    FOREIGN KEY (pelicula_id) REFERENCES peliculas(id)
 );
 
 -- Tabla VISITA

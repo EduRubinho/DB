@@ -25,4 +25,6 @@ class AdminModelo {
         $stmt->execute([':usuario' => $usuario]);
         return $stmt->fetch();
     }
+
+    
 }
