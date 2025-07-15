@@ -4,6 +4,7 @@ if (!defined('ROOT_PATH')) {
     header("Location: /DB/Controlador/admin/PeliculaControlador.php?accion=listar");
     exit;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

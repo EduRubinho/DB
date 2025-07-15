@@ -5,6 +5,7 @@ if (!defined('ROOT_PATH')) {
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

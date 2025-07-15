@@ -5,6 +5,7 @@ if (!defined('ROOT_PATH')) {
     header("Location: /DB/Controlador/admin/PeliculaControlador.php?accion=listar");
     exit;
 }
+
 $mensaje = $_SESSION['mensaje'] ?? '';
 $error = $_SESSION['error'] ?? '';
 unset($_SESSION['mensaje'], $_SESSION['error']);
@@ -28,7 +29,9 @@ unset($_SESSION['mensaje'], $_SESSION['error']);
             <div class="alert alert-danger"><?= $error ?></div>
         <?php endif; ?>
         
+
         <a href="/DB/Controlador/admin/PeliculaControlador.php?accion=crear" class="btn btn-primary mb-3">Nueva Película</a>
+
         
         <table class="table table-striped">
             <thead>
