@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once __DIR__ . '/../../config/session.php';
 $errores = $_SESSION['errores'] ?? '';
 unset($_SESSION['errores']);
 ?>
@@ -9,7 +9,7 @@ unset($_SESSION['errores']);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario Registro Cineplanet</title>
-  <link rel="stylesheet" href="../css/estilos.css">
+  <link rel="stylesheet" href="../css/registro_usuario.css">
 </head>
 <body>
 
